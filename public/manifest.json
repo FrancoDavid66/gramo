@@ -1,0 +1,10 @@
+{
+  "name": "GRAMO",
+  "short_name": "GRAMO",
+  "description": "Café de especialidad, cookies y cocina de temporada en Dorrego 2517.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4EFE3",
+  "theme_color": "#1F6B43",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

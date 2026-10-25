@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Base ---------- */
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  @apply bg-crema font-mono text-tinta antialiased;
+  overflow-x: clip;
+}
+::selection {
+  background: #ff8a5b;
+  color: #151513;
+}
+:focus-visible {
+  outline: 2px solid #151513;
+  outline-offset: 3px;
+}
+img,
+video {
+  display: block;
+}
+
+/* Lenis (scroll suave) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Cursor propio: se esconde el del sistema solo con mouse */
+@media (pointer: fine) {
+  html.cursor-on,
+  html.cursor-on a,
+  html.cursor-on button,
+  html.cursor-on label,
+  html.cursor-on [data-cursor] {
+    cursor: none;
+  }
+}
+
+/* ---------- Utilidades ---------- */
+@layer components {
+  .gutter {
+    padding-left: clamp(16px, 4vw, 56px);
+    padding-right: clamp(16px, 4vw, 56px);
+  }
+  .kicker {
+    @apply mb-5 font-mono text-[12px] uppercase tracking-[.18em] text-gris;
+  }
+  .up {
+    @apply font-mono text-[12px] uppercase tracking-[.12em];
+  }
+  .btn {
+    @apply inline-flex min-h-[54px] items-center justify-center gap-3 rounded-full px-7 font-mono text-[13px] uppercase tracking-[.1em] transition-colors duration-200;
+  }
+  .btn-tinta {
+    @apply btn border-[1.5px] border-tinta bg-tinta text-crema hover:bg-verde hover:border-verde;
+  }
+  .btn-linea {
+    @apply btn border-[1.5px] border-tinta text-tinta hover:bg-tinta hover:text-crema;
+  }
+  .btn-coral {
+    @apply btn min-h-[46px] border-[1.5px] border-coral bg-coral px-5 text-[12px] tracking-[.12em] text-tinta hover:bg-[#ffa27c];
+  }
+  .btn-crema {
+    @apply btn min-h-[46px] border-[1.5px] border-crema px-5 text-[12px] tracking-[.12em] text-crema hover:bg-crema hover:text-tinta;
+  }
+  .pill {
+    @apply relative inline-flex min-h-[46px] items-center rounded-full border-[1.5px] border-tinta px-5 font-mono text-[13px] uppercase tracking-[.08em];
+  }
+  .field {
+    @apply min-h-[44px] w-full rounded-none border-0 border-b-[1.5px] border-tinta bg-transparent py-2.5 font-mono text-[15px] text-tinta placeholder:text-[#77736A] focus:border-verde focus:outline-none;
+  }
+}
+
+/* ---------- SVG (trazos a mano) ---------- */
+.ink {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ink-b {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.logo-t {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 25px;
+  text-anchor: middle;
+  fill: currentColor;
+}
+.note-t {
+  font-family: 'Caveat', cursive;
+  font-weight: 500;
+  font-size: 27px;
+  fill: currentColor;
+}
+
+/* ---------- Ticket de balanza ---------- */
+.ticket::before,
+.ticket::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #eae3d3;
+  top: calc(100% - 131px);
+  z-index: 2;
+}
+.ticket::before {
+  left: -11px;
+}
+.ticket::after {
+  right: -11px;
+}
+.barcode {
+  background: repeating-linear-gradient(
+    90deg,
+    #151513 0 2px,
+    transparent 2px 4px,
+    #151513 4px 5px,
+    transparent 5px 7px,
+    #151513 7px 10px,
+    transparent 10px 12px,
+    #151513 12px 13px,
+    transparent 13px 16px
+  );
+}
+
+/* Slider de dosis */
+input[type='range'].dosis {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+}
+input[type='range'].dosis::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #151513;
+}
+input[type='range'].dosis::-moz-range-track {
+  height: 2px;
+  background: #151513;
+}
+input[type='range'].dosis::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  margin-top: -12px;
+  border-radius: 50%;
+  background: #ff8a5b;
+  border: 2px solid #151513;
+  transition: transform 0.15s;
+}
+input[type='range'].dosis::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ff8a5b;
+  border: 2px solid #151513;
+}
+input[type='range'].dosis:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
